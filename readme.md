@@ -28,7 +28,7 @@ PRODUCT_API_URL= http://backend.restapi.co.za/items/products
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/noroff-backend-1/aug24ft-ep-ca-1-Tzouela.git
+   git clone https://github.com/Tzouela/E-commerce-app-1.git
    ```
 
 2. Install dependencies with command: 
@@ -55,13 +55,3 @@ Ensure that your HTML file includes the following paths to successfully load the
   - Path: 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js'
 - **Bootstrap Bundle (Bootstrap JS)**:
   - Path: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js'
-
-
-## REFERENCES
-
-My initial creation of code was based on the lessons. Besides that, I have also worked with AI tools to assist me put together my raw ideas for the creation of this work that I am presenting. 
-
-Below are references of external resources that I have used:
-- ChatGPT, for helping me to search specific javascript syntaxes for my algorithms.
-- Copilot in Visual Studio Code, for helping complete lines of my codes.
-- Method-override for front-end: 'https://mohammdowais.medium.com/sending-put-and-delete-requests-through-html-f9ffe9e1b6cb'.
