@@ -1,12 +1,3 @@
-# Example .env
-ADMIN_USERNAME = 
-ADMIN_PASSWORD = 
-DATABASE_NAME = ecommercedb
-DIALECT = mysql
-DIALECTMODEL = mysql2
-PORT = 3000
-HOST = localhost
-
 TOKEN_SECRET=
 
 ADMIN_UI_HOST_URL= http://localhost:3001
@@ -32,7 +23,8 @@ PRODUCT_API_URL= http://backend.restapi.co.za/items/products
    ```
 
 2. Install dependencies with command: 
-```npm install dotenv```
+```cd back-end && npm install```
+```cd front-end && npm install```
 
 3. Create a .gitignore file and exclude your node modules and .env file(example .env above)
 
