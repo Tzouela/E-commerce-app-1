@@ -41,7 +41,7 @@ cd E-commerce-app-1
 ### 2. Install dependencies
 ```bash
 cd back-end && npm install
-cd ../front-end && npm install
+cd front-end && npm install
 ```
 
 ### 3. Create the database (MySQL example)
@@ -52,42 +52,18 @@ CREATE DATABASE ecommercedb;
 ### 4. Run the back-end
 ```bash
 cd back-end
-npm run dev
+npm start
 ```
 - API runs at 👉 [http://localhost:3000](http://localhost:3000)  
 - Swagger docs 👉 [http://localhost:3000/docs](http://localhost:3000/docs)
 
+
 ### 5. Run the front-end (Admin UI)
 ```bash
 cd front-end
-npm run dev
+npm start
 ```
 - Admin UI runs at 👉 [http://localhost:3001](http://localhost:3001)
-
-
-
-# Web Application: E-commerce 
-
-## Installation
-
-1. Clone the repository to your local machine:
-
-   ```bash
-   git clone https://github.com/Tzouela/E-commerce-app-1.git
-   ```
-
-2. Install dependencies with command: 
-```cd back-end && npm install```
-```cd front-end && npm install```
-
-3. Create a .gitignore file and exclude your node modules and .env file.
-
-4. Create a .env file and copy the example .env and configure own database credentials.
-
-5. Create database with the command: 
-```create database ecommercedb```
-
-6. Select the database and then run the application with the command: ```npm start```
 
 
 ## Libraries and Plugins
