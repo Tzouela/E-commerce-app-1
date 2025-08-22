@@ -5,7 +5,6 @@ This is a full-stack E-Commerce application with a **Node.js/Express back-end** 
 
 Create a `.env` file in the `back-end/` folder. Use the following template and adjust values to your environment:
 
-```env
 # JWT
 TOKEN_SECRET=your_jwt_secret
 
