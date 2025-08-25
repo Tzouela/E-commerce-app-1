@@ -4,8 +4,24 @@ This is a full-stack E-Commerce application with a **Node.js/Express back-end** 
 ## Example `.env`
 
 ```env
+# App
 PORT=3000
 TOKEN_SECRET=your_jwt_secret
+
+# Admin user bootstrap (first-time creation)
+ADMIN_UI_HOST_URL=http://localhost:3001
+ADMIN_UI_USERNAME=admin
+ADMIN_UI_PASSWORD=changeme
+ADMIN_UI_EMAIL=admin@example.com
+ADMIN_UI_FIRST_NAME=Admin
+ADMIN_UI_LAST_NAME=User
+ADMIN_UI_ADDRESS=123 Admin Street
+ADMIN_UI_TELEPHONE=1234567890
+
+# External product API (used for demo product population)
+PRODUCT_API_URL=http://backend.restapi.co.za/items/products
+
+# Database
 DB_HOST=localhost
 DB_PORT=3306
 DB_USER=root
