@@ -6,11 +6,11 @@ require('dotenv').config()
 
 const connection = {
   dialect: process.env.DIALECT,
-  dialectModel: process.env.DIALECTMODEL,
-  database: process.env.DATABASE_NAME,
-  username: process.env.ADMIN_USERNAME,
-  password: process.env.ADMIN_PASSWORD,
-  host: process.env.HOST
+  database: process.env.DB_NAME,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST,
+   port: process.env.DB_PORT || 3306
 }
 
 const sequelize = new Sequelize(connection);
