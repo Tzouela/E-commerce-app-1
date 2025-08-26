@@ -41,7 +41,7 @@ cd E-commerce-app-1
 ### 2. Install dependencies
 ```bash
 cd back-end && npm install
-cd ../front-end && npm install
+cd front-end && npm install
 ```
 
 ### 3. Run the back-end
@@ -54,23 +54,6 @@ API runs at 👉 http://localhost:3000
 Swagger docs 👉 http://localhost:3000/docs  
 
 ### 4. Run the front-end
-```bash
-cd front-end
-npm start
-```
-
-- Admin UI runs at 👉 http://localhost:3001  
-
-### 5. Run the back-end
-```bash
-cd back-end
-npm start
-```
-
-- API runs at 👉 http://localhost:3000  
-- Swagger docs available at 👉 http://localhost:3000/docs  
-
-### 6. Run the front-end (Admin UI)
 ```bash
 cd front-end
 npm start
