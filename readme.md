@@ -51,7 +51,7 @@ npm start
 ```
 
 API runs at 👉 http://localhost:3000  
-Swagger docs 👉 http://localhost:3000/docs  
+Swagger docs 👉 http://localhost:3000/doc 
 
 ### 4. Run the front-end
 ```bash
