@@ -9,8 +9,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var passport = require('passport');
-var session = require('express-session');
-var SQLiteStore = require('connect-sqlite3')(session);
 
 var initRouter = require('./routes/init');
 var authRouter = require('./routes/auth');
@@ -47,13 +45,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({
-  secret: 'random text',
-  resave: false,
-  saveUninitialized: false,
-  store: new SQLiteStore()
-}));
-app.use(passport.authenticate('session'));
+app.use(passport.initialize());
+
+app.use(bodyParser.json())
 
 app.use('/init', initRouter);
 app.use('/auth', authRouter);
@@ -68,7 +62,6 @@ app.use('/search', searchRouter);
 app.use('/cart', cartRouter);
 app.use('/orders', ordersRouter);
 
-app.use(bodyParser.json())
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 // catch 404 and forward to error handler
