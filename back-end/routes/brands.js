@@ -8,6 +8,7 @@ var { checkIfAuthorized, isAdmin } = require("./authMiddleware")
 router.get('/', async function (req, res, next) {
   try {
     // #swagger.tags = ['Brands']
+    /* #swagger.security = [] */
     // #swagger.description = "Gets the list of all available brands."
     // #swagger.produces = ['application/json']
     const result = await brandService.getAllBrands();
@@ -33,8 +34,8 @@ router.get('/', async function (req, res, next) {
 router.get('/admin', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Brands']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Gets the list of all available brands(Admin only)."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.produces = ['application/json']
     const result = await brandService.getAllBrandsForAdmin();
     res
@@ -59,6 +60,7 @@ router.get('/admin', checkIfAuthorized, isAdmin, async function (req, res, next)
 router.get('/:id', async function (req, res, next) {
   try {
     // #swagger.tags = ['Brands']
+    /* #swagger.security = [] */
     // #swagger.description = "Gets a specific brand."
     // #swagger.produces = ['application/json']
     const brandId = req.params.id;
@@ -94,8 +96,8 @@ router.get('/:id', async function (req, res, next) {
 router.get('/admin/:id', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Brands']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Gets a specific brand(Admin only)."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.produces = ['application/json']
     const brandId = req.params.id;
     const brand = await brandService.getBrandByIdForAdmin(brandId);
@@ -130,8 +132,8 @@ router.get('/admin/:id', checkIfAuthorized, isAdmin, async function (req, res, n
 router.post('/admin', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Brands']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Creates a new brand(Admin only)."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.consumes = ['application/json']
     // #swagger.produces = ['application/json']
     /* #swagger.parameters['body'] =  {
@@ -166,8 +168,8 @@ router.post('/admin', checkIfAuthorized, isAdmin, async function (req, res, next
 router.put('/admin/:id', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Brands']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Updates a specific brand(Admin only)."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.consumes = ['application/json']
     // #swagger.produces = ['application/json']
     /* #swagger.parameters['body'] =  {
@@ -212,8 +214,8 @@ router.put('/admin/:id', checkIfAuthorized, isAdmin, async function (req, res, n
 router.delete('/admin/:id', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Brands']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Deletes a specific brand(Admin only)."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.produces = ['application/json']
     const brandId = req.params.id;
     const deleted = await brandService.deleteBrand(brandId);

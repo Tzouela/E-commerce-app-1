@@ -8,8 +8,8 @@ var { checkIfAuthorized } = require("./authMiddleware");
 router.get('/', checkIfAuthorized, async function (req, res, next) {
   try {
     // #swagger.tags = ['Cart']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Gets or creates a cart for the registered user."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.produces = ['application/json']
     const userId = req.user.id;
     const items = await cartService.getCartForUser(userId);
@@ -35,8 +35,8 @@ router.get('/', checkIfAuthorized, async function (req, res, next) {
 router.post('/', checkIfAuthorized, async function (req, res, next) {
   try {
     // #swagger.tags = ['Cart']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Adds a product to teh cart of the registered user."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.consumes = ['application/json']
     // #swagger.produces = ['application/json']
     /* #swagger.parameters['body'] =  {
@@ -83,8 +83,8 @@ router.post('/', checkIfAuthorized, async function (req, res, next) {
 router.delete('/', checkIfAuthorized, async function (req, res) {
   try {
     // #swagger.tags = ['Cart']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Clears the registered user's cart."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.produces = ['application/json']
     const userId = req.user.id;
     const deletedCount = await cartService.clearCart(userId);
@@ -119,8 +119,8 @@ router.delete('/', checkIfAuthorized, async function (req, res) {
 
 router.post('/checkout/now', checkIfAuthorized, async function (req, res, next) {
   // #swagger.tags = ['Cart']
+  /* #swagger.security = [{ "bearerAuth": [] }] */
   // #swagger.description = "Checks out the registered user's cart and creates an order."
-  // #swagger.security = [{ bearerAuth: [] }]
   // #swagger.produces = ['application/json']
   try {
     const userId = req.user.id;

@@ -8,8 +8,8 @@ var { checkIfAuthorized, isAdmin } = require("./authMiddleware");
 router.get('/', checkIfAuthorized, async function (req, res, next) {
   try {
     // #swagger.tags = ['Orders']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Gets the list of all available orders."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.produces = ['application/json']
     const userId = req.user.id;
     const orders = await orderService.getOrdersForUser(userId);
@@ -35,8 +35,8 @@ router.get('/', checkIfAuthorized, async function (req, res, next) {
 router.get('/admin', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Orders']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Gets the list of all available orders(Admin only)."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.produces = ['application/json']
     const orders = await orderService.getAllOrdersForAdmin();
     return res
@@ -61,8 +61,8 @@ router.get('/admin', checkIfAuthorized, isAdmin, async function (req, res, next)
 router.get('/:id', checkIfAuthorized, async function (req, res, next) {
   try {
     // #swagger.tags = ['Orders']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Gets a specific order."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.produces = ['application/json']
     const orderId = parseInt(req.params.id, 10);
     if (!Number.isInteger(orderId)) {
@@ -106,8 +106,8 @@ router.get('/:id', checkIfAuthorized, async function (req, res, next) {
 
 router.get('/admin/:id', checkIfAuthorized, isAdmin, async function (req, res, next) {
   // #swagger.tags = ['Orders']
+  /* #swagger.security = [{ "bearerAuth": [] }] */
   // #swagger.description = "Gets a specific order(Admin only)."
-  // #swagger.security = [{ bearerAuth: [] }]
   // #swagger.produces = ['application/json']
   try {
     const orderId = parseInt(req.params.id, 10);
@@ -153,8 +153,8 @@ router.get('/admin/:id', checkIfAuthorized, isAdmin, async function (req, res, n
 router.put('/admin/:orderId/status', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Orders']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Updates a specific order its status(Admin only)."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.consumes = ['application/json']
     // #swagger.produces = ['application/json']
     /* #swagger.parameters['body'] =  {

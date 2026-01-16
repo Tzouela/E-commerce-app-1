@@ -22,6 +22,7 @@ var initService = new InitService(db, {
 router.post('/', async function (req, res, next) {
   try {
     // #swagger.tags = ['Init']
+    /* #swagger.security = [] */
     // #swagger.description = "Populates the products table from the external API that has the products data, registers an initial Admin, populates the roles tables and the memberships tables."
     // #swagger.produces = ['application/json']
     await initService.initializeDatabase();

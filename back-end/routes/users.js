@@ -9,8 +9,8 @@ var { checkIfAuthorized, isAdmin } = require('./authMiddleware');
 router.get('/admin', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Users']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Gets the list of all users."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.produces = ['application/json']
     const users = await userService.getAll();
     return res
@@ -35,8 +35,8 @@ router.get('/admin', checkIfAuthorized, isAdmin, async function (req, res, next)
 router.get('/admin/:userId', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Users']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Gets a specific user."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.produces = ['application/json']
     const userId = req.params.userId;
     const user = await userService.getOne(userId);
@@ -70,8 +70,8 @@ router.get('/admin/:userId', checkIfAuthorized, isAdmin, async function (req, re
 router.patch("/admin/:id/role", checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Users']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Updates the user role(Admin only)."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.consumes = ['application/json']
     // #swagger.produces = ['application/json']
     /* #swagger.parameters['body'] =  {

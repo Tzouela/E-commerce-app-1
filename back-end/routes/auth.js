@@ -62,6 +62,7 @@ passport.deserializeUser(async (id, cb) => {
 
 router.post('/register', (req, res, next) => {
   // #swagger.tags = ['Register User']
+  /* #swagger.security = [] */
   // #swagger.description = "Registers users."
   // #swagger.consumes = ['application/json']
   // #swagger.produces = ['application/json']
@@ -113,6 +114,7 @@ router.post('/register', (req, res, next) => {
 
 router.post('/login', (req, res, next) => {
   // #swagger.tags = ['Login']
+  /* #swagger.security = [] */
   // #swagger.description = "Logs in users."
   // #swagger.consumes = ['application/json']
   // #swagger.produces = ['application/json']

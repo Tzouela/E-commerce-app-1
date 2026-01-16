@@ -15,7 +15,7 @@
       "type": "apiKey",
       "name": "Authorization",
       "in": "header",
-      "description": "Paste your JWT token here in the format: Bearer <JWT_TOKEN>"
+      "description": "Enter: Bearer <JWT_TOKEN>"
     }
   },
   "paths": {
@@ -35,7 +35,8 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": []
       }
     },
     "/auth/register": {
@@ -66,7 +67,8 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": []
       }
     },
     "/auth/login": {
@@ -97,7 +99,8 @@
           "401": {
             "description": "Unauthorized"
           }
-        }
+        },
+        "security": []
       }
     },
     "/admin/login": {
@@ -131,7 +134,8 @@
           "403": {
             "description": "Forbidden"
           }
-        }
+        },
+        "security": []
       }
     },
     "/users/admin": {
@@ -363,7 +367,8 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": []
       }
     },
     "/products/admin": {
@@ -475,7 +480,8 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": []
       }
     },
     "/products/admin/{id}": {
@@ -675,7 +681,8 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": []
       }
     },
     "/categories/admin": {
@@ -787,7 +794,8 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": []
       }
     },
     "/categories/admin/{id}": {
@@ -950,7 +958,8 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": []
       }
     },
     "/brands/admin": {
@@ -1062,7 +1071,8 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": []
       }
     },
     "/brands/admin/{id}": {
@@ -1237,7 +1247,8 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
+        },
+        "security": []
       }
     },
     "/cart/": {

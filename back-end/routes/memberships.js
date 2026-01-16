@@ -8,8 +8,8 @@ var { checkIfAuthorized, isAdmin } = require('./authMiddleware');
 router.get('/admin', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Memberships']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Gets the list of all available memberships."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.produces = ['application/json']
     const result = await membershipService.getAllMemberships();
     return res

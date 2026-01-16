@@ -7,6 +7,7 @@ var { QueryTypes } = require('sequelize');
 router.post('/', async function (req, res, next) {
   try {
     // #swagger.tags = ['Search']
+    /* #swagger.security = [] */
     // #swagger.description = "Searches for a product either by fully or partially entering the name or by entering the category or brand or all three together."
     // #swagger.consumes = ['application/json']
     // #swagger.produces = ['application/json']

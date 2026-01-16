@@ -10,6 +10,7 @@ var { checkIfAuthorized, isAdmin } = require('./authMiddleware');
 router.get('/', async function (req, res, next) {
   try {
     // #swagger.tags = ['Products']
+    /* #swagger.security = [] */
     // #swagger.description = "Gets the list of all available products."
     // #swagger.produces = ['application/json']
     const products = await productService.getAllProducts();
@@ -36,8 +37,8 @@ router.get('/', async function (req, res, next) {
 router.get('/admin', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Products']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Gets the list of all available products(Admin only)."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.produces = ['application/json']
     const products = await productService.getAllProductsAdmin();
     return res
@@ -62,6 +63,7 @@ router.get('/admin', checkIfAuthorized, isAdmin, async function (req, res, next)
 router.get('/:id', async function (req, res, next) {
   try {
     // #swagger.tags = ['Products']
+    /* #swagger.security = [] */
     // #swagger.description = "Gets a specific product."
     // #swagger.produces = ['application/json']
     const productId = req.params.id;
@@ -98,8 +100,8 @@ router.get('/:id', async function (req, res, next) {
 router.get('/admin/:id', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Products']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Gets a specific product(Admin only)."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.produces = ['application/json']
     const productId = req.params.id;
     const product = await productService.getProductByIdAdmin(productId);
@@ -135,8 +137,8 @@ router.get('/admin/:id', checkIfAuthorized, isAdmin, async function (req, res, n
 router.post('/admin', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Products']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Creates a new product(Admin only)."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.consumes = ['application/json']
     // #swagger.produces = ['application/json']
     /* #swagger.parameters['body'] =  {
@@ -173,8 +175,8 @@ router.post('/admin', checkIfAuthorized, isAdmin, async function (req, res, next
 router.put('/admin/:id', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Products']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Updates a specific product(Admin only)."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.consumes = ['application/json']
     // #swagger.produces = ['application/json']
     /* #swagger.parameters['body'] =  {
@@ -211,8 +213,8 @@ router.put('/admin/:id', checkIfAuthorized, isAdmin, async function (req, res, n
 router.put('/admin/:id/restore', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Products']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Restores a specific product(Admin only)."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.produces = ['application/json']
     const productId = req.params.id;
     const result = await productService.restoreProduct(productId);
@@ -239,8 +241,8 @@ router.put('/admin/:id/restore', checkIfAuthorized, isAdmin, async function (req
 router.delete('/admin/:id', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Products']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Soft-deletes a specific product(Admin only)."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.produces = ['application/json']
     const productId = req.params.id;
     const result = await productService.softDeleteProduct(productId);

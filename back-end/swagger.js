@@ -11,7 +11,7 @@ const doc = {
       type: "apiKey",
       name: "Authorization",
       in: "header",
-      description: "Paste your JWT token here in the format: Bearer <JWT_TOKEN>"
+      description: "Enter: Bearer <JWT_TOKEN>"
     },
   },
   definitions: {

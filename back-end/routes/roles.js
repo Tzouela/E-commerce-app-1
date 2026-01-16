@@ -8,8 +8,8 @@ var { checkIfAuthorized, isAdmin } = require('./authMiddleware');
 router.get('/admin', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Roles']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Gets the list of all available roles."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.produces = ['application/json']
     const result = await roleService.getAllRoles();
     return res

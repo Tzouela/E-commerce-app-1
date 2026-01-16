@@ -8,6 +8,7 @@ var { checkIfAuthorized, isAdmin } = require("./authMiddleware")
 router.get('/', async function (req, res, next) {
   try {
     // #swagger.tags = ['Categories']
+    /* #swagger.security = [] */
     // #swagger.description = "Gets the list of all available categories."
     // #swagger.produces = ['application/json']
     const categories = await categoryService.getAllCategories();
@@ -33,8 +34,8 @@ router.get('/', async function (req, res, next) {
 router.get('/admin', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Categories']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Gets the list of all available categories(Admin only)."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.produces = ['application/json']
     const categories = await categoryService.getAllCategoriesForAdmin();
     res
@@ -59,6 +60,7 @@ router.get('/admin', checkIfAuthorized, isAdmin, async function (req, res, next)
 router.get('/:id', async function (req, res, next) {
   try {
     // #swagger.tags = ['Categories']
+    /* #swagger.security = [] */
     // #swagger.description = "Gets a specific category."
     // #swagger.produces = ['application/json']
     const categoryId = req.params.id;
@@ -94,8 +96,8 @@ router.get('/:id', async function (req, res, next) {
 router.get('/admin/:id', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Categories']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Gets a specific category(Admin only)."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.produces = ['application/json']
     const categoryId = req.params.id;
     const category = await categoryService.getCategoryByIdForAdmin(categoryId);
@@ -130,8 +132,8 @@ router.get('/admin/:id', checkIfAuthorized, isAdmin, async function (req, res, n
 router.post('/admin', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Categories']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Creates a new category(Admin only)."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.consumes = ['application/json']
     // #swagger.produces = ['application/json']
     /* #swagger.parameters['body'] =  {
@@ -166,8 +168,8 @@ router.post('/admin', checkIfAuthorized, isAdmin, async function (req, res, next
 router.put('/admin/:id', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Categories']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Updates a specific category(Admin only)."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.consumes = ['application/json']
     // #swagger.produces = ['application/json']
     /* #swagger.parameters['body'] =  {
@@ -212,8 +214,8 @@ router.put('/admin/:id', checkIfAuthorized, isAdmin, async function (req, res, n
 router.delete('/admin/:id', checkIfAuthorized, isAdmin, async function (req, res, next) {
   try {
     // #swagger.tags = ['Categories']
+    /* #swagger.security = [{ "bearerAuth": [] }] */
     // #swagger.description = "Deletes a specific category(Admin only)."
-    // #swagger.security = [{ bearerAuth: [] }]
     // #swagger.produces = ['application/json']
     const categoryId = req.params.id;
     const deleted = await categoryService.deleteCategory(categoryId);

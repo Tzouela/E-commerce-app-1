@@ -7,6 +7,7 @@ var router = express.Router();
 
 router.post("/login", (req, res, next) => {
   // #swagger.tags = ['Login Admin']
+  /* #swagger.security = [] */
   // #swagger.description = "Logs in Admins."
   // #swagger.consumes = ['application/json']
   // #swagger.produces = ['application/json']
