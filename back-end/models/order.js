@@ -25,8 +25,8 @@ module.exports = (sequelize, Sequelize) => {
     },
     status: {
       type: Sequelize.DataTypes.ENUM,
-      values: ['In progress', 'Ordered', 'Completed'],
-      defaultValue: 'In progress',
+      values: ['Pending', 'Ordered', 'Completed'],
+      defaultValue: 'Pending',
       allowNull: false
     },
     membership_capture: {
