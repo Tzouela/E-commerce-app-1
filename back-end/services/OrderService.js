@@ -234,7 +234,7 @@ class OrderService {
     const order = await this.Order.findByPk(orderId);
     if (!order) throw new Error("Order not found");
 
-    const valid = ["In progress", "Ordered", "Completed"];
+    const valid = ["Pending", "Ordered", "Completed"];
     if (!valid.includes(newStatus)) throw new Error("Invalid status");
 
     order.status = newStatus;
