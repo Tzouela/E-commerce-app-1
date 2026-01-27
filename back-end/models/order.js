@@ -1,3 +1,5 @@
+const { ORDER_STATUS } = require("../constants/statuses");
+
 module.exports = (sequelize, Sequelize) => {
   const Order = sequelize.define("Order", {
     id: {
@@ -24,9 +26,8 @@ module.exports = (sequelize, Sequelize) => {
       defaultValue: 0.00
     },
     status: {
-      type: Sequelize.DataTypes.ENUM,
-      values: ['Pending', 'Ordered', 'Completed'],
-      defaultValue: 'Pending',
+      type: Sequelize.DataTypes.ENUM(ORDER_STATUS.PENDING, ORDER_STATUS.ORDERED, ORDER_STATUS.COMPLETED),
+      defaultValue: ORDER_STATUS.PENDING,
       allowNull: false
     },
     membership_capture: {

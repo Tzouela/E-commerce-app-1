@@ -1,3 +1,5 @@
+const { CART_STATUS } = require("../constants/statuses");
+
 module.exports = (sequelize, Sequelize) => {
   const Cart = sequelize.define("Cart", {
     id: {
@@ -14,9 +16,8 @@ module.exports = (sequelize, Sequelize) => {
       }
     },
     status: {
-      type: Sequelize.DataTypes.ENUM,
-      values: ['pending', 'checked_out'],
-      defaultValue: 'pending',
+      type: Sequelize.DataTypes.ENUM(CART_STATUS.PENDING, CART_STATUS.CHECKED_OUT),
+      defaultValue: CART_STATUS.PENDING,
       allowNull: false
     }
   },
