@@ -1,4 +1,4 @@
-var { Op, where } = require('sequelize');
+const { CART_STATUS, ORDER_STATUS } = require("../constants/statuses");
 var OrderService = require("./OrderService");
 var UserService = require("./UserService");
 var MembershipService = require("./MembershipService");
@@ -16,9 +16,9 @@ class CartService {
   }
 
   async getOrCreateCart(userId) {
-    let cart = await this.Cart.findOne({ where: { userId } });
+    let cart = await this.Cart.findOne({ where: { userId, status: CART_STATUS.PENDING } });
     if (!cart) {
-      cart = await this.Cart.create({ userId });
+      cart = await this.Cart.create({ userId, status: CART_STATUS.PENDING });
     }
     return cart;
   }
@@ -65,12 +65,13 @@ class CartService {
     return item;
   }
 
-  async getCartForUser(userId) {
-    const cart = await this.Cart.findOne({ where: { userId } });
+  async getCartForUser(userId, { transaction} = {}) {
+    const cart = await this.Cart.findOne({ where: { userId, status: CART_STATUS.PENDING }, transaction });
     if (!cart) return [];
 
     const items = await this.CartItem.findAll({
       where: { cartId: cart.id },
+      transaction,
       include: [
         {
           model: this.Product,
@@ -93,10 +94,10 @@ class CartService {
     });
   }
 
-  async clearCart(userId) {
-    const cart = await this.Cart.findOne({ where: { userId } });
+  async clearCart(userId, { transaction } = {}) {
+    const cart = await this.Cart.findOne({ where: { userId, status: CART_STATUS.PENDING }, transaction });
     if (!cart) return 0;
-    return this.CartItem.destroy({ where: { cartId: cart.id } });
+    return this.CartItem.destroy({ where: { cartId: cart.id }, transaction });
   }
 
 
@@ -105,15 +106,15 @@ class CartService {
     try {
 
       const cartRow = await this.Cart.findOne(
-        { where: { userId } },
-        { transaction: t }
+        { where: { userId, status: CART_STATUS.PENDING },
+        transaction: t }
       );
 
       if (!cartRow) {
         throw new Error("Your cart is empty");
       }
 
-      const items = await this.getCartForUser(userId);
+      const items = await this.getCartForUser(userId, { transaction: t });
       if (items.length === 0) {
         throw new Error("Your cart is empty");
       }
@@ -158,7 +159,7 @@ class CartService {
           userId,
           order_number: orderNumber,
           total_amount: totalAfterDiscount,
-          status: "In progress",
+          status: ORDER_STATUS.PENDING,
           membership_capture: membershipStatus
         },
         { transaction: t }
@@ -181,8 +182,15 @@ class CartService {
         );
       }
 
-      await this.CartItem.destroy(
-        { where: { cartId: cartRow.id } },
+      await this.clearCart(userId, { transaction: t });
+
+      await this.Cart.update(
+        { status: CART_STATUS.CHECKED_OUT },
+        { where: { id: cartRow.id }, transaction: t }
+      );
+
+      await this.Cart.create(
+        { userId, status: CART_STATUS.PENDING },
         { transaction: t }
       );
 
