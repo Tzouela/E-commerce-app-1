@@ -1,5 +1,40 @@
-# Web Application: E-Commerce  
-This is a full-stack E-Commerce application with a **Node.js/Express back-end** (MySQL + Sequelize + JWT authentication) and a **front-end Admin UI** built with EJS + Bootstrap. 
+# E-commerce Backend API
+Node.js | Express | MySQL | JWT Authentication
+
+This project is a backend-focused fullstack e-commerce application built with Node.js and Express.
+
+The backend exposes REST APIs for authentication, product management, categories and orders.  
+It uses a MySQL relational database with Sequelize ORM and implements JWT-based authentication with role-based access control.
+
+The project also includes API documentation with Swagger and API testing using Jest and Supertest.
+
+## Tech Stack
+
+Backend
+- Node.js
+- Express.js
+- MySQL
+- Sequelize ORM
+
+Authentication
+- JWT
+- Passport
+
+Testing
+- Jest
+- Supertest
+
+Documentation
+- Swagger
+
+## Key Features
+
+- REST API built with Express
+- MySQL relational database using Sequelize ORM
+- JWT authentication and role-based access control
+- Swagger API documentation
+- API testing with Jest and Supertest
+- Admin interface built with EJS and Bootstrap
 
 ## Example `.env`
 
@@ -61,7 +96,7 @@ npm start
 
 - Admin UI runs at 👉 http://localhost:3001  
 
-## Libraries and Plugins
+## Frontend Dependencies
 
 Include Bootstrap via CDN in your HTML (or EJS) template:
 
