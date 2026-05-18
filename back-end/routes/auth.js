@@ -1,14 +1,14 @@
 require('dotenv').config()
-var express = require('express');
-var passport = require('passport');
-var LocalStrategy = require('passport-local');
-var jwt = require('jsonwebtoken');
-var crypto = require('crypto');
-var db = require('../models');
-var UserService = require('../services/UserService');
-var userService = new UserService(db);
+const express = require('express');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const crypto = require('crypto');
+const { signToken } = require('../utils/jwt');
+const db = require('../models');
+const UserService = require('../services/UserService');
+const userService = new UserService(db);
 
-var router = express.Router();
+const router = express.Router();
 
 passport.use(new LocalStrategy(
   {
@@ -49,16 +49,6 @@ passport.use(new LocalStrategy(
     }
   }
 ));
-
-passport.serializeUser((user, cb) => cb(null, user.id));
-passport.deserializeUser(async (id, cb) => {
-  try {
-    const user = await userService.getOneByName(id);
-    cb(null, user);
-  } catch (e) {
-    cb(e);
-  }
-});
 
 router.post('/register', (req, res, next) => {
   // #swagger.tags = ['Register User']
@@ -128,6 +118,7 @@ router.post('/login', (req, res, next) => {
   */
   passport.authenticate('local', { session: false }, (err, user, info) => {
     if (err) return next(err);
+
     if (!user) {
       return res.status(401).json({
         status: 'error',
@@ -136,20 +127,18 @@ router.post('/login', (req, res, next) => {
       });
     }
 
-    const payload = ({
-      sub: user.id,
-      email: user.email,
-      username: user.username
-    });
-
-    const token = jwt.sign(payload, process.env.TOKEN_SECRET, { expiresIn: '2h' });
+    const token = signToken(user);
 
     res.status(200).json({
       status: 'success',
       statusCode: 200,
       message: 'Login successful',
       token,
-      payload
+      user: {
+        id: user.id,
+        username: user.username,
+        email: user.email
+      }
     });
   })(req, res, next);
 });

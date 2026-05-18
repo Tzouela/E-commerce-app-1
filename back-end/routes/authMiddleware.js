@@ -1,5 +1,5 @@
 require("dotenv").config();
-var jwt = require("jsonwebtoken");
+const { verifyToken } = require("../utils/jwt");
 var UserService = require("../services/UserService");
 var db = require("../models");
 var userService = new UserService(db);
@@ -15,11 +15,10 @@ async function checkIfAuthorized(req, res, next) {
   }
 
   try {
-    const payload = jwt.verify(token, process.env.TOKEN_SECRET);
+    const payload = verifyToken(token);
 
     const userId = payload.sub;
     if (!userId) {
-      ;
       return res
         .status(401)
         .json({ status: "error", message: "Invalid token payload" });
@@ -43,8 +42,13 @@ async function checkIfAuthorized(req, res, next) {
   }
 }
 
+const ROLE = {
+  ADMIN: 1,
+  USER: 2,
+};
+
 function isAdmin(req, res, next) {
-  if (!req.user || req.user.roleId !== 1) {
+  if (!req.user || req.user.roleId !== ROLE.ADMIN) {
     return res
       .status(403)
       .json({ status: "error", message: "Admins only" });
