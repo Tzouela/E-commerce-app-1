@@ -1,12 +1,9 @@
 # E-commerce Backend API
 Node.js | Express | MySQL | JWT Authentication
 
-This project is a backend-focused fullstack e-commerce application built with Node.js and Express.
-
-The backend exposes REST APIs for authentication, product management, categories and orders.  
-It uses a MySQL relational database with Sequelize ORM and implements JWT-based authentication with role-based access control.
-
-The project also includes API documentation with Swagger and API testing using Jest and Supertest.
+This is a backend-focused fullstack e-commerce application built with Node.js and Express.
+The backend consists of 12 modular REST API routes organized into a dedicated service layer with 9 service classes following MVC architecture. The MySQL relational database includes 10 tables with a transactional checkout flow that handles stock validation, a membership-based discount calculator, and automatic order generation.
+Authentication is implemented with JWT and Passport, with role-based access control for admin and regular users. The project includes API documentation with Swagger and integration tests with Jest and Supertest. Frontend and backend run as two independent applications with CORS configuration.
 
 ## Tech Stack
 
